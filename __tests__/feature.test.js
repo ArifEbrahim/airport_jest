@@ -44,6 +44,18 @@ describe('Feature Test:', () => {
       };
       expect(()=> { plane.land(airport); }).toThrow('cannot land - airport full');
     });
+
+    // As the system designer
+    // So that the software can be used for many different airports
+    // I would like a default airport capacity that can be overridden as appropriate
+
+    it('has a variable capacity', () => {
+      airport = new Airport(undefined, 30)
+      for(let i = 0; i < 30; i++) {
+        plane.land(airport);
+      };
+      expect(() => { plane.land(airport); }).toThrow('cannot land - airport full');
+    });
   });
 
   describe('when stormy', () => {

@@ -26,6 +26,13 @@ describe('Airport', () => {
       };
       expect(() => { airport.land(plane); }).toThrow('cannot land - airport full');
     });
+    test('has a variable capacity', () => {
+      airport = new Airport(weather, 30)
+      for(let i = 0; i < 30; i++) {
+        airport.land(plane);
+      };
+      expect(() => { airport.land(plane); }).toThrow('cannot land - airport full');
+    });
   });
 
 
