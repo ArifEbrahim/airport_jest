@@ -18,4 +18,10 @@ describe('Plane', () => {
     expect(airport.land).toHaveBeenCalledWith(plane);
   });
 
+  test('it can take off from an airport', () => {
+    plane.land(airport);
+    plane.takeoff();
+    expect(airport.takeoff).toHaveBeenCalled();
+  })
+
 });

@@ -19,4 +19,10 @@ describe('Airport', () => {
     expect(airport.planes()).toContain(plane);
   });
 
+  test('it allows planes to take off', () => {
+    airport.land(plane);
+    airport.takeoff(plane);
+    expect(airport.planes()).not.toContain(plane);
+  })
+
 });
