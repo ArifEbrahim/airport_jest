@@ -1,7 +1,7 @@
 let Plane = require('../src/plane')
-let Airport = require('../src/airport')
-jest.mock('../src/airport')
 
+jest.mock('../src/airport')
+let Airport = require('../src/airport')
 
 describe('Plane', () => {
 

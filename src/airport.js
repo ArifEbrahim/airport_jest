@@ -10,8 +10,16 @@ class Airport {
   };
 
   takeoff () {
-    this._hangar.pop();
+    if (this.isStormy()) {
+      throw new Error('cannot takeoff during storm');
+    } else {
+      this._hangar.pop();
+    }
   };
+
+  isStormy () {
+    return false;
+  }
 };
 
 module.exports = Airport;

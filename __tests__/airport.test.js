@@ -25,4 +25,15 @@ describe('Airport', () => {
     expect(airport.planes()).not.toContain(plane);
   })
 
+  test('it can check for stormy weather', () => {
+    expect(airport.isStormy()).toBe(false);
+  })
+
+  describe('under stormy conditions', () => {
+    test('planes cannot take off', () => {
+      jest.spyOn(airport, 'isStormy').mockReturnValue('true');
+      expect(() => { airport.takeoff(); }).toThrow('cannot takeoff during storm');
+    })
+  })
+
 });
