@@ -33,6 +33,17 @@ describe('Feature Test:', () => {
       plane.takeoff();
       expect(airport.planes()).not.toContain(plane);
     });
+
+    // As an air traffic controller 
+    // To ensure safety 
+    // I want to prevent landing when the airport is full 
+
+    it('has a default capacity of 20', () => {
+      for(let i = 0; i < 20; i++) {
+        plane.land(airport);
+      };
+      expect(()=> { plane.land(airport); }).toThrow('cannot land - airport full');
+    });
   });
 
   describe('when stormy', () => {

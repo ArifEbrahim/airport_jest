@@ -13,9 +13,21 @@ describe('Airport', () => {
     airport = new Airport(weather);
   });
 
-  test('it has no planes by default', () => {
-    expect(airport.planes()).toEqual([]);
+  describe('capacity', () => {
+    beforeEach(() => {
+      jest.spyOn(weather, 'isStormy').mockReturnValue(false);
+    });
+    test('it has no planes by default', () => {
+      expect(airport.planes()).toEqual([]);
+    });
+    test('it has a default capacity of 20', () => {
+      for(let i = 0; i < 20; i++) {
+        airport.land(plane);
+      };
+      expect(() => { airport.land(plane); }).toThrow('cannot land - airport full');
+    });
   });
+
 
   describe('under normal conditions', () => {
     beforeEach(() => {
