@@ -21,7 +21,7 @@ describe('Airport', () => {
 
   test('it allows planes to take off', () => {
     airport.land(plane);
-    airport.takeoff(plane);
+    airport.takeoff();
     expect(airport.planes()).not.toContain(plane);
   })
 
@@ -33,6 +33,11 @@ describe('Airport', () => {
     test('planes cannot take off', () => {
       jest.spyOn(airport, 'isStormy').mockReturnValue('true');
       expect(() => { airport.takeoff(); }).toThrow('cannot takeoff during storm');
+    })
+
+    test('planes cannot land', () => {
+      jest.spyOn(airport, 'isStormy').mockReturnValue('true');
+      expect(() => { airport.land(plane); }).toThrow('cannot land during storm');
     })
   })
 

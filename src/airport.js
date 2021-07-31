@@ -6,15 +6,17 @@ class Airport {
   planes = () => this._hangar;
 
   land (plane) {
+    if (this.isStormy()) {
+      throw new Error('cannot land during storm');
+    } 
     this._hangar.push(plane);
   };
 
   takeoff () {
     if (this.isStormy()) {
       throw new Error('cannot takeoff during storm');
-    } else {
-      this._hangar.pop();
-    }
+    } 
+    this._hangar.pop();
   };
 
   isStormy () {

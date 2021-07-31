@@ -34,10 +34,20 @@ describe('Feature Test:', () => {
   // I want to prevent takeoff when weather is stormy
 
   test('planes are prevented from taking off when stormy', () => {
-    jest.spyOn(airport, 'isStormy').mockReturnValue(true);
     plane.land(airport);
+    jest.spyOn(airport, 'isStormy').mockReturnValue(true);
     expect( ()=> { plane.takeoff(); }).toThrow('cannot takeoff during storm');
     expect(airport.planes()).toContain(plane);
+  });
+
+  // As an air traffic controller
+  // To ensure safety
+  // I want to prevent landing when weather is stormy
+
+  test('planes are prevented from landing when stormy', () => {
+    jest.spyOn(airport, 'isStormy').mockReturnValue(true);
+    expect( ()=> { plane.land(airport); }).toThrow('cannot land during storm');
+    expect(airport.planes()).not.toContain(plane);
   });
 });
 
