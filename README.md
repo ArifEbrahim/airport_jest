@@ -25,8 +25,8 @@ Please se further details [here](https://github.com/ArifEbrahim/airport_JS).
       ✓ has a default capacity of 20 (16 ms)
       ✓ has a variable capacity (1 ms)
     when stormy
-      ✓ planes are prevented from taking off when stormy
-      ✓ planes are prevented from landing when stormy
+      ✓ planes are prevented from taking off 
+      ✓ planes are prevented from landing 
 
  PASS  __tests__/airport.test.js
   Airport
